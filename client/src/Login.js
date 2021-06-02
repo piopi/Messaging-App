@@ -3,14 +3,14 @@ import { Redirect, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import {
   Grid,
-  Box,
+  Link,
   Typography,
   Button,
   FormControl,
   TextField,
 } from "@material-ui/core";
 import { login } from "./store/utils/thunkCreators";
-
+import './Login.css';
 const Login = (props) => {
   const history = useHistory();
   const { user, login } = props;
@@ -28,40 +28,52 @@ const Login = (props) => {
   }
 
   return (
-    <Grid container justify="center">
-      <Box>
-        <Grid container item>
-          <Typography>Need to register?</Typography>
-          <Button onClick={() => history.push("/register")}>Register</Button>
+    <Grid id='Login' container direction="row" justify="flex-start" alignItems="stretch">
+      <Grid item xs={12} md={5} id="Banner">
+      <Grid container id="BannerText" direction="column" justify="center" alignItems="center">
+      <img src='assets/bubble.svg' alt=''/>
+      <p>Converse with anyone with any language</p>
+      </Grid>
+      </Grid>
+      <Grid item xs={12}  md={7}>
+      <Grid container direction="column" justify="center" >
+        <Grid item>
+          <Grid container justify="flex-end" alignItems="center"  className='linkSection'>
+          <Typography>Don't have an account?</Typography>
+          <Button onClick={() => history.push("/register")}>Create account</Button>
+          </Grid>
         </Grid>
-        <form onSubmit={handleLogin}>
-          <Grid>
+        <form  onSubmit={handleLogin}>
+          <Grid item id='fitContent'>
             <Grid>
-              <FormControl margin="normal" required>
-                <TextField
+              <h3>Welcome back!</h3>
+              <FormControl  margin="normal" required>
+                <TextField className="inputMargin"
                   aria-label="username"
-                  label="Username"
+                  label="E-mail address"
                   name="username"
                   type="text"
-                />
+                  />
               </FormControl>
             </Grid>
             <FormControl margin="normal" required>
-              <TextField
-                label="password"
+              <TextField className="inputMargin"
+                label="Password"
                 aria-label="password"
                 type="password"
                 name="password"
               />
+              <Link href="#" id='forgotLink'>Forgot?</Link>
             </FormControl>
-            <Grid>
+            <Grid container justify="center" alignItems="center">
               <Button type="submit" variant="contained" size="large">
                 Login
               </Button>
             </Grid>
           </Grid>
         </form>
-      </Box>
+      </Grid>
+      </Grid>
     </Grid>
   );
 };

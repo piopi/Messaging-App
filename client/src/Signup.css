@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+*{
+    font-family: 'Open Sans', sans-serif!important;
+}
+:root {
+    --blue: #3A8DFF;
+    --gray: #B0B0B0;
+  }
+#SignUp{
+    height: 100%;
+}
+@media (min-width: 961px) {
+    #SignUpContent{
+        margin: 0 10%;
+        position: absolute;
+        top: 53%;
+        transform: translateY(-50%);
+    }
+    #SignUpContent input{
+        width: 380px;
+        margin-top: 15px;
+        font-size: 14px;
+    }   
+  }
+  @media (max-width: 960px) {
+    #SignUpContent input{
+        width: 250px;
+        margin-top: 15px;
+        font-size: 14px;
+    }
+    #SignUpContent{
+        margin: 0 auto;
+    }
+  }
+  #SignUpContent{
+    width: fit-content;
+}
+
+#SignUpContent button{
+    background-color: var(--blue);
+    color: #fff;
+    -webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+    margin-top: 20px;
+    padding: 15px 60px;
+    
+}
+#SignUpContent button span{
+    font-weight: 700;
+}
+#SignUpContent button:hover{
+    background-color: var(--blue);
+    color: #000;
+}
+
+#SignUpContent label{
+    font-size: 14px;
+    color: var(--gray);
+    
+}
+#SignUpContent .inputMargin{
+    margin-bottom: 20px;
+}
+

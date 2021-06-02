@@ -15,6 +15,12 @@ export const theme = createMuiTheme({
       input: {
         fontWeight: "bold"
       }
+    },
+    MuiInputLabel: {
+      shrink: {
+        transform: 'translate(0, 1.5px) scale(1)',
+        transformOrigin: 'top left',
+      }
     }
   },
   palette: {

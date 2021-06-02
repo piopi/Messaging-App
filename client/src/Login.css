@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+*{
+    font-family: 'Open Sans', sans-serif!important;
+    font-weight: 600;
+}
+:root {
+    --blue: #3A8DFF;
+    --gray: #B0B0B0;
+  }
+body { 
+    height: 100%;
+}
+html {
+    height: 100%;
+}
+#root{
+    height: 100%;
+}
+#Login{
+    height: 100%;
+}
+#Banner{
+    background-image: url(assets/bg-img.png);
+    background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    
+}
+#BannerText{
+    
+    height: 100%;
+    background: linear-gradient(rgba(58,141,255,0.85), rgba(134,185,255,0.85));
+    font-weight: 400;
+    font-size: 26px;
+    color: #fff;
+      
+}
+#BannerText p{
+    width: 269px;
+    font-weight: 400;
+    text-align: center;
+}
+
+
+h3{
+    font-weight: 600;
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+.linkSection button{
+    color: var(--blue);
+    font-weight: 600;
+    font-size: 14px;
+    width: 140px;
+    height: 54px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+.linkSection p{
+    color: var(--gray);
+    font-weight: 400;
+    font-size: 14px;
+    
+}
+@media (min-width: 961px) {
+    #BannerText img{
+        margin-top: -25%;
+    }
+    #fitContent{
+        margin: 0 10%;
+        position: absolute;
+        top: 45%;
+        transform: translateY(-50%);
+    }
+    .linkSection p{
+        margin: 20px 20px;
+    }
+    .linkSection button{
+        margin: 40px 50px 40px 20px;
+    }
+    #fitContent input{
+        width: 380px;
+        margin-top: 15px;
+        font-size: 14px;
+    }
+    
+  }
+  @media (max-width: 960px) {
+    #fitContent input{
+        width: 250px;
+        margin-top: 15px;
+        font-size: 14px;
+    }
+    #fitContent{
+        margin: 0 auto;
+    }
+    .linkSection p{
+        margin: 20px auto;
+    }
+    .linkSection button{
+        margin: 40px auto;
+    }
+  }
+
+#fitContent{
+    width: fit-content;
+}
+
+#fitContent button{
+    background-color: var(--blue);
+    color: #fff;
+    -webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+    margin-top: 20px;
+    padding: 15px 60px;
+    
+}
+#fitContent button span{
+    font-weight: 700;
+}
+#fitContent button:hover{
+    background-color: var(--blue);
+    color: #000;
+}
+
+#fitContent label{
+    font-size: 14px;
+    color: var(--gray);
+    
+}
+#fitContent .inputMargin{
+    margin-bottom: 20px;
+}
+#forgotLink{
+    position: absolute;
+    right: 0px;
+    bottom: 25px;
+    font-size: 12px;
+}
+
