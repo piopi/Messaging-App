@@ -13,13 +13,13 @@ export const userStyles = makeStyles((theme) => ({
     height: "100%",
     background:
       "linear-gradient(rgba(58,141,255,0.85), rgba(134,185,255,0.85))",
-    fontWeight: "400",
-    fontSize: "26px",
     color: "#fff",
     "& p": {
+      fontSize: "26px",
       width: "269px",
       fontWeight: "400",
       textAlign: "center",
+      marginTop: "20px"
     },
     "& img": {
       [theme.breakpoints.up("md")]: {

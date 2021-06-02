@@ -9,6 +9,7 @@ import {
   FormControl,
   TextField,
 } from "@material-ui/core";
+import SideBanner from "./components/SideBanner";
 import { login } from "./store/utils/thunkCreators";
 import { userStyles } from "./themes/styles/login_signup_style";
 const Login = (props) => {
@@ -35,18 +36,7 @@ const Login = (props) => {
       justify="flex-start"
       alignItems="stretch"
     >
-      <Grid item xs={12} md={5} className={classes.banner}>
-        <Grid
-          container
-          className={classes.bannerText}
-          direction="column"
-          justify="center"
-          alignItems="center"
-        >
-          <img src="assets/bubble.svg" alt="" />
-          <p>Converse with anyone with any language</p>
-        </Grid>
-      </Grid>
+      <SideBanner />
       <Grid item xs={12} md={7}>
         <Grid container direction="column" justify="center">
           <Grid item>
