@@ -3,18 +3,19 @@ import { Redirect, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import {
   Grid,
-  Box,
+  Link,
   Typography,
   Button,
   FormControl,
   TextField,
 } from "@material-ui/core";
+import SideBanner from "./components/SideBanner";
 import { login } from "./store/utils/thunkCreators";
-
+import { userStyles } from "./themes/styles/login_signup_style";
 const Login = (props) => {
   const history = useHistory();
   const { user, login } = props;
-
+  const classes = userStyles();
   const handleLogin = async (event) => {
     event.preventDefault();
     const username = event.target.username.value;
@@ -28,40 +29,69 @@ const Login = (props) => {
   }
 
   return (
-    <Grid container justify="center">
-      <Box>
-        <Grid container item>
-          <Typography>Need to register?</Typography>
-          <Button onClick={() => history.push("/register")}>Register</Button>
-        </Grid>
-        <form onSubmit={handleLogin}>
-          <Grid>
-            <Grid>
-              <FormControl margin="normal" required>
-                <TextField
-                  aria-label="username"
-                  label="Username"
-                  name="username"
-                  type="text"
-                />
-              </FormControl>
-            </Grid>
-            <FormControl margin="normal" required>
-              <TextField
-                label="password"
-                aria-label="password"
-                type="password"
-                name="password"
-              />
-            </FormControl>
-            <Grid>
-              <Button type="submit" variant="contained" size="large">
-                Login
+    <Grid
+      className={classes.root}
+      container
+      direction="row"
+      justify="flex-start"
+      alignItems="stretch"
+    >
+      <SideBanner />
+      <Grid item xs={12} md={7}>
+        <Grid container direction="column" justify="center">
+          <Grid item>
+            <Grid
+              container
+              justify="flex-end"
+              alignItems="center"
+              className={classes.linkSection}
+            >
+              <Typography color="secondary">Don't have an account?</Typography>
+              <Button color="primary" onClick={() => history.push("/register")}>
+                Create account
               </Button>
             </Grid>
           </Grid>
-        </form>
-      </Box>
+          <form onSubmit={handleLogin}>
+            <Grid item className={`${classes.fitContent} ${classes.loginPage}`}>
+              <Grid>
+                <h3>Welcome back!</h3>
+                <FormControl margin="normal" required>
+                  <TextField
+                    className="inputMargin"
+                    aria-label="username"
+                    label="E-mail address"
+                    name="username"
+                    type="text"
+                  />
+                </FormControl>
+              </Grid>
+              <FormControl margin="normal" required>
+                <TextField
+                  className="inputMargin"
+                  label="Password"
+                  aria-label="password"
+                  type="password"
+                  name="password"
+                />
+                <Link href="#" className={classes.forgotLink}>
+                  Forgot?
+                </Link>
+              </FormControl>
+              <Grid container justify="center" alignItems="center">
+                <Button
+                  color="primary"
+                  type="submit"
+                  variant="contained"
+                  size="large"
+                >
+                  Login
+                </Button>
+              </Grid>
+            </Grid>
+          </form>
+        </Grid>
+      </Grid>
     </Grid>
   );
 };
