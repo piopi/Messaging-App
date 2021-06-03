@@ -12,7 +12,6 @@ router.post("/", async (req, res, next) => {
     const senderId = req.user.id;
     const { recipientId, text, conversationId, sender, readStatus } = req.body;
 
-    // Search the related conversation
     let conversation = await Conversation.findConversation(
       senderId,
       recipientId

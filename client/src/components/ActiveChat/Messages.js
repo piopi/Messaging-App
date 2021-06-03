@@ -8,25 +8,15 @@ const Messages = (props) => {
 
   return (
     <Box>
-      {messages
-        .sort((message1, message2) =>
-          message1.createdAt > message2.createdAt ? 1 : -1
-        )
-        .map((message) => {
-          console.log(message.createdAt);
-          const time = moment(message.createdAt).format("h:mm");
+      {messages.map((message) => {
+        const time = moment(message.createdAt).format("h:mm");
 
-          return message.senderId === userId ? (
-            <SenderBubble key={message.id} text={message.text} time={time} />
-          ) : (
-            <OtherUserBubble
-              key={message.id}
-              text={message.text}
-              time={time}
-              otherUser={otherUser}
-            />
-          );
-        })}
+        return message.senderId === userId ? (
+          <SenderBubble key={message.id} text={message.text} time={time} />
+        ) : (
+          <OtherUserBubble key={message.id} text={message.text} time={time} otherUser={otherUser} />
+        );
+      })}
     </Box>
   );
 };
