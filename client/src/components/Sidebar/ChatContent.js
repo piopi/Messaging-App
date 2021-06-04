@@ -8,6 +8,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     marginLeft: 20,
     flexGrow: 1,
+    position: "relative",
   },
   username: {
     fontWeight: "bold",
@@ -19,18 +20,34 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: -0.17,
   },
   notification: {
-    height: 20,
-    width: 20,
+    height: 25,
+    width: 25,
     backgroundColor: "#3F92FF",
     marginRight: 10,
     color: "white",
-    fontSize: 10,
+    fontSize: 12,
     letterSpacing: -0.5,
     fontWeight: "bold",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 10,
+    position: "absolute",
+    right: 0,
+    paddingRight: "1px",
+  },
+  name: {
+    display: "flex",
+  },
+  unRead: {
+    color: "#000",
+    fontWeight: "bold",
+  },
+  smallCircle: {
+    borderRadius: "50%",
+  },
+  smallOvale: {
+    borderRadius: "15px 15px 15px 15px",
+    width: 35,
   },
 }));
 
@@ -38,16 +55,41 @@ const ChatContent = (props) => {
   const classes = useStyles();
 
   const { conversation } = props;
-  const { latestMessageText, otherUser } = conversation;
+  const { latestMessageText, otherUser, messages } = conversation;
+
+  let count = messages.filter(
+    (message) =>
+      message.readStatus === false && otherUser.id === message.senderId
+  ).length;
 
   return (
     <Box className={classes.root}>
       <Box>
-        <Typography className={classes.username}>
-          {otherUser.username}
-        </Typography>
-        <Typography className={classes.previewText}>
+        <Box className={classes.name}>
+          <Typography className={classes.username}>
+            {otherUser.username}
+          </Typography>
+          {count !== 0 && (
+            <Typography
+              className={
+                count > 9
+                  ? `${classes.notification} ${classes.smallOvale}`
+                  : `${classes.notification} ${classes.smallCircle}`
+              }
+            >
+              {count}{" "}
+            </Typography>
+          )}
+        </Box>
+        <Typography
+          className={
+            count !== 0
+              ? `${classes.previewText} ${classes.unRead}`
+              : `${classes.previewText}`
+          }
+        >
           {latestMessageText}
+          {}
         </Typography>
       </Box>
     </Box>
