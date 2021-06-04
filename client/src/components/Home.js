@@ -54,7 +54,7 @@ class Home extends Component {
         <Grid container component="main" className={classes.root}>
           <CssBaseline />
           <SidebarContainer />
-          <ActiveChat fetchConversations={this.props.fetchConversations} />
+          <ActiveChat />
         </Grid>
       </>
     );

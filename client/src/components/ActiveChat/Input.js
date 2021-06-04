@@ -42,7 +42,6 @@ class Input extends Component {
       readStatus: false,
     };
     await this.props.postMessage(reqBody);
-    this.props.fetchConversations();
     this.setState({
       text: "",
     });
