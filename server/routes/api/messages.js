@@ -3,15 +3,13 @@ const { Op } = require("sequelize");
 const { Conversation, Message } = require("../../db/models");
 const onlineUsers = require("../../onlineUsers");
 
-// expects {recipientId, text, conversationId } in body (conversationId will be null if no conversation exists yet)
 router.post("/", async (req, res, next) => {
   try {
     if (!req.user) {
       return res.sendStatus(401);
     }
     const senderId = req.user.id;
-    const { recipientId, text, conversationId, sender, readStatus } = req.body;
-
+    const { recipientId, text, sender } = req.body;
     let conversation = await Conversation.findConversation(
       senderId,
       recipientId
