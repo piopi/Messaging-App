@@ -4,22 +4,20 @@ A one-to-one realtime chat app.
 
 ## Running Application Locally
 
+###Requirement:
+- [Docker](https://docs.docker.com/get-docker/)
+
+At the root of the folder, run the following command:
 ```
-psql
-CREATE  DATABASE messenger;
-\q
-
-cd server
-npm install
-
-// seed the database
-npm run seed
-
-npm run dev
+Docker-compose up -d
 ```
 
-Create a .env file in the server directory and add your session secret
+Update your session secret in the `docker-compose.yml` file at the following line:
 
 ```
-SESSION_SECRET = "your session secret"
+SESSION_SECRET: "your session secret"
 ```
+
+
+You access the react app at: `http://localhost:3000`
+And the server at: `http://localhost:3001`
