@@ -61,7 +61,6 @@ const ChatContent = (props) => {
       ).length
     );
   }, [messages, otherUser.id]);
-  console.log(unreadCount);
   return (
     <Box className={classes.root}>
       <Box>
