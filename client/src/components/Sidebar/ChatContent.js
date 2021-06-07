@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
   },
   notification: {
     height: 25,
-    width: 25,
     backgroundColor: "#3F92FF",
     marginRight: 10,
     color: "white",
@@ -33,7 +32,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     position: "absolute",
     right: 0,
-    paddingRight: "1px",
+    borderRadius: "15px 15px 15px 15px",
+    width: "fit-content",
+    padding: "0 10px",
   },
   name: {
     display: "flex",
@@ -41,13 +42,6 @@ const useStyles = makeStyles((theme) => ({
   unRead: {
     color: "#000",
     fontWeight: "bold",
-  },
-  smallCircle: {
-    borderRadius: "50%",
-  },
-  smallOvale: {
-    borderRadius: "15px 15px 15px 15px",
-    width: 35,
   },
 }));
 
@@ -57,11 +51,17 @@ const ChatContent = (props) => {
   const { conversation } = props;
   const { latestMessageText, otherUser, messages } = conversation;
 
-  let count = messages.filter(
-    (message) =>
-      message.readStatus === false && otherUser.id === message.senderId
-  ).length;
+  const [unreadCount, setUnreadCount] = useState(0);
 
+  useEffect(() => {
+    setUnreadCount(
+      messages.filter(
+        (message) =>
+          message.readStatus === false && otherUser.id === message.senderId
+      ).length
+    );
+  }, [messages, otherUser.id]);
+  console.log(unreadCount);
   return (
     <Box className={classes.root}>
       <Box>
@@ -69,21 +69,15 @@ const ChatContent = (props) => {
           <Typography className={classes.username}>
             {otherUser.username}
           </Typography>
-          {count !== 0 && (
-            <Typography
-              className={
-                count > 9
-                  ? `${classes.notification} ${classes.smallOvale}`
-                  : `${classes.notification} ${classes.smallCircle}`
-              }
-            >
-              {count}{" "}
+          {unreadCount !== 0 && (
+            <Typography className={classes.notification}>
+              {unreadCount}
             </Typography>
           )}
         </Box>
         <Typography
           className={
-            count !== 0
+            unreadCount !== 0
               ? `${classes.previewText} ${classes.unRead}`
               : `${classes.previewText}`
           }

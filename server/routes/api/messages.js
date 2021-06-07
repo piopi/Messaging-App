@@ -43,7 +43,7 @@ router.post("/", async (req, res, next) => {
     next(error);
   }
 });
-router.post("/read", async (req, res, next) => {
+router.patch("/:conversationId/readStatus", async (req, res, next) => {
   try {
     const { conversationId, otherUserId } = req.body;
     await Message.update(

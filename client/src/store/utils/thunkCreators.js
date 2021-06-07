@@ -75,7 +75,11 @@ const saveMessage = async (body) => {
 };
 
 export const saveReadMessage = async (body) => {
-  const { data } = await axios.post("/api/messages/read", body);
+  const { data } = await axios.patch(
+    `/api/messages/${body.conversationId}/readStatus`,
+    body,
+    { credentials: "include" }
+  );
   return data;
 };
 
