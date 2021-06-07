@@ -5,7 +5,9 @@ import {
   addConversation,
   setNewMessage,
   setSearchedUsers,
+  markRead,
 } from "../conversations";
+
 import { gotUser, setFetchingStatus } from "../user";
 
 // USER THUNK CREATORS
@@ -72,6 +74,24 @@ const saveMessage = async (body) => {
   return data;
 };
 
+export const saveReadMessage = async (body) => {
+  const { data } = await axios.patch(
+    `/api/messages/${body.conversationId}/readStatus`,
+    body,
+    { credentials: "include" }
+  );
+  return data;
+};
+
+export const markReadMessage = (body) => (dispatch) => {
+  try {
+    saveReadMessage(body).then((data) => {
+      dispatch(markRead(data.id));
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
 const sendMessage = (data, body) => {
   socket.emit("new-message", {
     message: data.message,
