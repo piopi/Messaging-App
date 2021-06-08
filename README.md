@@ -12,7 +12,7 @@ At the root of the folder, run the following command:
 Docker-compose up -d
 ```
 
-Create a .env file in the server directory and add your session secret, sql credentials and url as follow:
+Create a .env file in the root folder and add your session secret, sql credentials and url as follow:
 
 ```
 # SERVER VARIABLES
