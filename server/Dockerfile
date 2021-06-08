@@ -1,5 +1,5 @@
 FROM node:10
-
+ENV PORT=3001
 WORKDIR /app
 
 COPY ./package.json .

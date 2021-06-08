@@ -4,12 +4,8 @@ services:
     build: ./server
     depends_on:
       - postgres
-    environment:
-      DATABASE_URL: postgres://user:pass@postgres:5432/messenger
-      NODE_ENV: development
-      SESSION_SECRET: "your session secret"
-      CHOKIDAR_USEPOLLING: "true"
-      PORT: 3001
+    env_file:
+      - .env
     ports:
       - "3001:3001"
     volumes:
@@ -24,10 +20,8 @@ services:
     image: postgres:12
     ports:
       - "5432:5432"
-    environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: pass
-      POSTGRES_DB: messenger
+    env_file:
+      - .env
     container_name: postgres
     networks:
       - database
@@ -42,8 +36,8 @@ services:
     ports:
       - 3000:3000
     container_name: client
-    environment:
-      CHOKIDAR_USEPOLLING: "true"
+    env_file:
+      - .env
     volumes:
       - ./client:/app/
 
