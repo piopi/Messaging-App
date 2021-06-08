@@ -4,7 +4,7 @@ A one-to-one realtime chat app.
 
 ## Running Application Locally
 
-###Requirement:
+### Requirement:
 - [Docker](https://docs.docker.com/get-docker/)
 
 At the root of the folder, run the following command:
