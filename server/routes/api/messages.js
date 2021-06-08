@@ -9,7 +9,7 @@ router.post("/", async (req, res, next) => {
       return res.sendStatus(401);
     }
     const senderId = req.user.id;
-    const { recipientId, text, sender } = req.body;
+    const { recipientId, text, sender, readStatus } = req.body;
     let conversation = await Conversation.findConversation(
       senderId,
       recipientId
