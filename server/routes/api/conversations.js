@@ -20,9 +20,9 @@ router.get("/", async (req, res, next) => {
         },
       },
       attributes: ["id"],
-      order: [[Message, "createdAt", "DESC"]],
+      order: [[Message, "createdAt", "ASC"]],
       include: [
-        { model: Message, order: ["createdAt", "DESC"] },
+        { model: Message, order: ["createdAt", "ASC"] },
         {
           model: User,
           as: "user1",
@@ -60,7 +60,6 @@ router.get("/", async (req, res, next) => {
         convoJSON.otherUser = convoJSON.user2;
         delete convoJSON.user2;
       }
-
       // set property for online status of the other user
       if (onlineUsers.includes(convoJSON.otherUser.id)) {
         convoJSON.otherUser.online = true;
@@ -69,11 +68,13 @@ router.get("/", async (req, res, next) => {
       }
 
       // set properties for notification count and latest message preview
-      convoJSON.latestMessageText = convoJSON.messages[0].text;
+      convoJSON.latestMessageText =
+        convoJSON.messages[convoJSON.messages.length - 1].text;
+      convoJSON.messages = convoJSON.messages;
       conversations[i] = convoJSON;
     }
 
-    res.json(conversations);
+    res.json(conversations.reverse());
   } catch (error) {
     next(error);
   }
