@@ -4,22 +4,32 @@ A one-to-one realtime chat app.
 
 ## Running Application Locally
 
+###Requirement:
+- [Docker](https://docs.docker.com/get-docker/)
+
+At the root of the folder, run the following command:
 ```
-psql
-CREATE  DATABASE messenger;
-\q
-
-cd server
-npm install
-
-// seed the database
-npm run seed
-
-npm run dev
+Docker-compose up -d
 ```
 
-Create a .env file in the server directory and add your session secret
+Create a .env file in the root folder and add your session secret, sql credentials and url as follow:
 
 ```
-SESSION_SECRET = "your session secret"
+# SERVER VARIABLES
+DATABASE_URL= postgres://user:pass@postgres:5432/messenger
+NODE_ENV= development
+SESSION_SECRET= "your session secret"
+
+# Allow hot reloading in container
+CHOKIDAR_USEPOLLING= "true"
+
+#POSTGRES Variables
+POSTGRES_USER= user
+POSTGRES_PASSWORD= pass
+POSTGRES_DB= messenger
+
 ```
+
+
+You access the react app at: `http://localhost:3000`
+And the server at: `http://localhost:3001`
