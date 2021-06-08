@@ -9,7 +9,7 @@ A one-to-one realtime chat app.
 
 At the root of the folder, run the following command:
 ```
-Docker-compose up -d
+docker-compose up -d
 ```
 
 Create a .env file in the root folder and add your session secret, sql credentials and url as follow:
