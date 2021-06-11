@@ -49,18 +49,19 @@ const ChatContent = (props) => {
   const classes = useStyles();
 
   const { conversation } = props;
-  const { latestMessageText, otherUser, messages } = conversation;
+  const { latestMessageText, otherUser } = conversation;
 
   const [unreadCount, setUnreadCount] = useState(0);
 
   useEffect(() => {
     setUnreadCount(
-      messages.filter(
+      conversation.messages.filter(
         (message) =>
-          message.readStatus === false && otherUser.id === message.senderId
+          message.readStatus === false &&
+          conversation.otherUser.id === message.senderId
       ).length
     );
-  }, [messages, otherUser.id]);
+  }, [conversation]);
   return (
     <Box className={classes.root}>
       <Box>
