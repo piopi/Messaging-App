@@ -1,7 +1,33 @@
 # Messenger
 
-A one-to-one realtime chat app.
+A one-to-one realtime chat app. 
 
+# Technologies
+- React
+- MaterialUI
+- SocketIO
+- Redux
+- NodeJS
+- Postgres
+- Docker 
+  
+# Functionalities
+- Authentification with CSRF protection and Session Cookie
+- Real time chat with SocketIO
+- Nice UI with MaterialUI
+- Contenerized application with docker
+- Login/Registration system
+- Notification system
+- Search user
+
+# Screenshots
+
+### Login page
+![](/screenshot/login-page.png)
+### Account Creation page
+![](/screenshot/logout-page.png)
+### Chat page
+![](/screenshot/message.png)
 ## Running Application Locally
 
 ### Requirement:
