@@ -15,7 +15,7 @@ A one-to-one realtime chat app.
 - Authentification with CSRF protection and Session Cookie
 - Real time chat with SocketIO
 - Nice UI with MaterialUI
-- Contenerized application with docker
+- Containerized application with docker
 - Login/Registration system
 - Notification system
 - Search user
